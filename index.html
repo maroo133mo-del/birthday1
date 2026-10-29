@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>كل سنة وانتي طيبة يا بنوتي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#4a1424; --wine-deep:#2e0b16; --rose:#f2c4cf; --blush:#fbe9ec; --gold:#d9b27c; --ink:#2a1018;
+  --bg:#fbe9ec; --fg:#3a1420; --soft:#7a4655; --card:#fff6f7;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#2e0b16;--fg:#fbe9ec;--soft:#e2b6c1;--card:#3a1220}
+}
+:root[data-theme="dark"]{--bg:#2e0b16;--fg:#fbe9ec;--soft:#e2b6c1;--card:#3a1220}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:'Tajawal',system-ui,sans-serif;font-size:18px;line-height:1.8;overflow-x:hidden}
+h1,h2,.ruq{font-family:'Aref Ruqaa','Amiri',serif;font-weight:700}
+body.locked{overflow:hidden;height:100vh}
+
+/* gate */
+#gate{position:fixed;inset:0;z-index:50;background:radial-gradient(120% 90% at 50% 20%,#6b1d35 0%,var(--wine-deep) 70%);color:var(--blush);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .9s ease,visibility .9s}
+#gate.gone{opacity:0;visibility:hidden}
+.gift{position:relative;width:170px;height:150px;margin-bottom:34px;cursor:pointer;border:0;background:none;padding:0}
+.gift .box{position:absolute;bottom:0;left:0;right:0;height:96px;background:var(--rose);border-radius:6px}
+.gift .lid{position:absolute;bottom:92px;left:-8px;right:-8px;height:34px;background:#f7d6de;border-radius:6px;transform-origin:left bottom;transition:transform .8s cubic-bezier(.5,-.4,.3,1.2)}
+.gift .rib-v{position:absolute;bottom:0;left:calc(50% - 12px);width:24px;height:126px;background:var(--gold);z-index:2}
+.gift .bow{position:absolute;bottom:118px;left:calc(50% - 30px);width:60px;height:34px;z-index:3;transition:transform .8s}
+.gift .bow::before,.gift .bow::after{content:"";position:absolute;top:0;width:28px;height:28px;border:7px solid var(--gold);border-radius:50% 50% 50% 0}
+.gift .bow::before{left:-2px;transform:rotate(-20deg)}
+.gift .bow::after{right:-2px;transform:scaleX(-1) rotate(-20deg)}
+.gift.open .lid{transform:rotate(-38deg) translateY(-10px)}
+.gift.open .bow{transform:translate(-30px,-34px) rotate(-38deg)}
+.gift:focus-visible,.go:focus-visible,#mus:focus-visible{outline:3px solid var(--gold);outline-offset:6px}
+#gate h1{font-size:clamp(34px,9vw,56px);margin:0 0 6px;line-height:1.3}
+#gate p{margin:0 0 26px;color:var(--rose);font-size:18px}
+.go{font:inherit;font-size:19px;font-weight:700;background:var(--gold);color:var(--wine-deep);border:0;border-radius:999px;padding:13px 38px;cursor:pointer}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;position:relative}
+.hero .name{font-size:clamp(88px,30vw,220px);line-height:1;margin:0;color:var(--wine);letter-spacing:0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero .name{color:var(--rose)}}
+:root[data-theme="dark"] .hero .name{color:var(--rose)}
+.hero .sub{font-size:clamp(22px,5vw,30px);margin:6px 0 4px}
+.hero .date{color:var(--soft);margin:0 0 30px}
+#cd{display:flex;gap:14px;justify-content:center;direction:rtl}
+#cd div{min-width:68px;padding:10px 6px;border-radius:14px;background:var(--card);border:1px solid color-mix(in srgb,var(--gold) 55%,transparent)}
+#cd b{display:block;font-size:30px;line-height:1.2;font-family:'Tajawal';font-variant-numeric:tabular-nums}
+#cd span{font-size:14px;color:var(--soft)}
+.scroll{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom,0px));font-size:15px;color:var(--soft)}
+
+/* photos: arch frames */
+.moment{display:flex;flex-direction:column;align-items:center;padding:56px 24px;gap:22px}
+.arch{width:min(78vw,380px);aspect-ratio:3/4;border-radius:999px 999px 18px 18px;overflow:hidden;border:6px solid var(--gold);box-shadow:0 18px 40px -18px rgba(74,20,36,.55);background:var(--card)}
+.arch.wide{aspect-ratio:1/1;width:min(86vw,460px)}
+.arch img{width:100%;height:100%;object-fit:cover;display:block}
+.moment p{margin:0;max-width:20em;text-align:center;font-size:clamp(24px,6vw,30px);font-family:'Aref Ruqaa',serif;line-height:1.7}
+.moment:nth-of-type(odd) .arch{transform:rotate(-1.5deg)}
+.moment:nth-of-type(even) .arch{transform:rotate(1.5deg)}
+.rv{opacity:0;transition:opacity .9s ease}
+.rv.in{opacity:1}
+
+/* letter */
+.letter{padding:90px 24px 130px;display:flex;flex-direction:column;align-items:center;gap:24px}
+.letter-toggle{font-family:'Aref Ruqaa','Amiri',serif;font-weight:700;font-size:clamp(28px,7vw,38px);color:var(--wine-deep);background:var(--gold);border:2px solid var(--wine);border-radius:999px;padding:14px 34px;box-shadow:0 8px 22px rgba(74,20,36,.18);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.letter-toggle:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(74,20,36,.24)}
+.letter-toggle:focus-visible{outline:3px solid var(--wine);outline-offset:5px}
+.letter-content{display:none;width:100%;justify-content:center}
+.letter-content.open{display:flex;animation:letterReveal .7s ease both}
+@keyframes letterReveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.paper{max-width:560px;width:100%;background:var(--wine);color:var(--blush);border-radius:24px;padding:44px 30px;text-align:center}
+.paper h2{margin:0 0 18px;font-size:clamp(34px,8vw,46px);line-height:1.4;color:var(--rose)}
+.paper p{margin:0 0 14px}
+.paper .sig{margin-top:26px;font-family:'Aref Ruqaa',serif;font-size:30px;color:var(--gold)}
+
+/* music button */
+#mus{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:14px;z-index:20;width:48px;height:48px;border-radius:50%;border:1px solid var(--gold);background:var(--card);color:var(--fg);font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center}
+#mus.show{display:flex}
+
+canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transition:none}.gift .lid,.gift .bow{transition:none}}
+</style>
+</head>
+<body class="locked">
+
+<div id="gate">
+  <button class="gift" id="gift" aria-label="افتحي الهدية"><span class="box"></span><span class="rib-v"></span><span class="lid"></span><span class="bow"></span></button>
+  <h1 class="ruq">يا توتى</h1>
+  <p>فيه حاجة متحضرالك</p>
+  <button class="go" id="go">افتحي الهدية</button>
+</div>
+
+<button id="mus" aria-label="تشغيل أو إيقاف الأغنية">♪</button>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<main>
+  <section class="hero">
+    <p class="sub ruq" id="subline">فاضل على عيد ميلادك</p>
+    <h1 class="name ruq">شاهي</h1>
+    <p class="date">٢ نوفمبر ٢٠٢٦</p>
+    <div id="cd" aria-live="off">
+      <div><b id="d">0</b><span>يوم</span></div>
+      <div><b id="h">0</b><span>ساعة</span></div>
+      <div><b id="m">0</b><span>دقيقة</span></div>
+      <div><b id="s">0</b><span>ثانية</span></div>
+    </div>
+    <span class="scroll">انزلي تحت</span>
+  </section>
+
+  <section class="moment rv"><div class="arch"><img src="images/01-mirror.jpg" alt="شاهي في المراية"></div><p>أجمل بنوته في حياتي كلها</p></section>
+  <section class="moment rv"><div class="arch"><img src="images/02-black-jacket.jpg" alt="شاهي بالجاكيت الأسود"></div><p>طب هو في قمر كدا </p></section>
+  <section class="moment rv"><div class="arch"><img src="images/04-flowers.jpg" alt="شاهي والورد"></div><p>اليوم اللي وفيت فيه بوعدي ليكي</p></section>
+  <section class="moment rv"><div class="arch"><img src="images/05-white-shirt.jpg" alt="شاهي بالقميص الأبيض" style="object-position:50% 25%"></div><p>بحبك ي قطتي </p></section>
+  <section class="moment rv"><div class="arch"><img src="images/06-night.jpg" alt="شاهي في الليل" style="object-position:50% 20%"></div><p>مفيش في جمالك </p></section>
+  <section class="moment rv"><div class="arch"><img src="images/07-red-lips.jpg" alt="شاهي بالروج الأحمر" style="object-position:50% 25%"></div><p>عيني بقت مكتفيه بيكي انتي</p></section>
+  <section class="moment rv"><div class="arch"><img src="images/08-watch.jpg" alt="الساعة وصورتنا" style="object-position:30% 75%"></div><p>ببقا مبسوط ومطمن طول ما ايدي ماسكه أيدك</p></section>
+  <section class="moment rv"><div class="arch wide"><img src="images/09-us.jpg" alt="إحنا الاتنين" style="object-position:50% 40%"></div><p>وجودك جنبك بيقويني وبيخليني قادر على كل حاجه</p></section>
+
+  <section class="letter rv">
+    <button class="letter-toggle" id="letterToggle" type="button" aria-expanded="false" aria-controls="letterContent">أفتحي كدا 💌</button>
+    <div class="letter-content" id="letterContent" aria-hidden="true">
+    <div class="paper">
+      <h2>كل سنة وإنتي طيبة يا بنوتى</h2>
+      <p>كل سنة وإنتي أقرب لقلبي، وأقرب لي روحي، وأحلى في عيني.</p>
+      <p>كل سنة وانتي طيبة يا توتى ، وكل سنة وانتي أجمل وأحن وأغلى حاجة في حياتي، كل سنة وانتي معايا ومنورة دنيتي وقلبي، وكل سنة وانتي بتحققي كل اللي نفسك فيه وبشوف الفرحة في عيونك دايمًا يا روح قلبي ❤️🥹❤️‍🩹 بجد مش عارف أبدأ كلامي منين ولا أقولك إيه يوصف اللي جوايا ناحيتك، لأن مهما كتبت ومهما قلت هحس إن الكلام قليل عليكي وعلى مكانتك عندي، بس كل اللي أقدر أقولهولك إن وجودك في حياتي فرق معايا كتير، وإنك بقيتي جزء من يومي وتفكيري وكل أحلامي، بقيت أتمنى أشوفك مبسوطة حتى لو على حساب راحتي، وأتمنى أكون السبب في ضحكتك وراحتك وأمانك، وأكون الشخص اللي لما الدنيا تضايقك تيجي تحكيله وانتي مطمنة إنك هتلاقي قلب يسمعك ويفهمك ويحتويكي ❤️🫂 يا شاهي أنا مش بتمنى من الدنيا حاجات كتير قد ما بتمنى إنك تفضلي بخير وسعيدة، وإن ربنا يبعد عن قلبك كل زعل وكل وجع، وإن ضحكتك الحلوة متفارقش وشك أبدًا، وإن كل أيامك الجاية تكون أحلى من اللي فاتت، يمكن أنا مش بعرف أعبّر عن كل اللي جوايا بالطريقة اللي تستاهليها، ويمكن ساعات كلامي ميكونش كفاية عشان أوصلك إحساسي، بس والله انتي عندي أغلى من أي كلام، وحبك في قلبي مش محتاج مناسبة عشان أقولك عليه، بس النهارده يوم مميز لأنه اليوم اللي اتولدت فيه الإنسانة اللي بقت غالية على قلبي بالشكل ده، واليوم اللي بفتكر فيه قد إيه وجودك نعمة جميلة في حياتي ❤️🥹 أنا مش عايز أكون مجرد شخص في حياتك وخلاص، أنا نفسي أكون سندك وصاحبك وحبيبك والشخص اللي تلاقيه جنبك في كل مرحلة، في فرحتك قبل زعلك، وفي نجاحك قبل تعبك، وفي الأيام الصعبه قبل السهله نفسي أفضل الشخص اللي تقدري تكوني معاه على طبيعتك من غير ما تخافي من حكم أو زعل، واللي يسمعك حتى لو مش عارف يحل المشكلة، واللي يحاول يفهمك حتى لو اختلف معاكي، لأن الحب بالنسبالي مش مجرد كلام حلو بيتقال، الحب اهتمام واحترام واحتواء وصبر ومواقف بتثبت إن الشخص فعلًا غالي ❤️💍 ونفسي ييجي اليوم اللي نحتفل فيه بعيد ميلادك وإحنا في بيتنا، ونبقى بنفتكر كل الأيام اللي عدت علينا وإحنا بنحاول نوصل لحلمنا، وأكون وقتها لسه بقولك كل سنة وانتي طيبة، ولسه بحاول أشوف الفرحة في عيونك، ولسه بفرح لفرحتك كأنها فرحتي، ونفضل نكبر مع بعض ونحقق أحلامنا واحدة واحدة، ونبني حياة فيها مودة ورحمة وضحك وذكريات حلوة، ونبقى لبعض الأمان والونس في كل الظروف، وربنا يقدرني إني أكون ليكي الزوج اللي يرضي ربنا فيكي ويصونك ويحافظ على قلبك ويقدرك زي ما تستاهلي ❤️🤲🏻 يا أجمل هدية من ربنا، وافتكري دايمًا إنك مش مطالبة تكوني قوية طول الوقت، وإن من حقك تتعبي وتزعلي وتاخدي وقتك، وإنك تستاهلي حد يسمعك ويحترم مشاعرك ويقف جنبك من غير ما يقلل من أي حاجة بتحسي بيها ❤️🫶🏻 كل سنة وانتي حبيبتي وخطيبتي ونصيبي الجميل اللي بدعي ربنا يديمه عليا، كل سنة وانتي أقرب إنسانة لقلبي، وكل سنة وإحنا مع بعض بنقرب أكتر من أحلامنا، وكل سنة وأنا بتمنى أشوفك أسعد واحدة في الدنيا، وكل سنة وربنا يجمعنا على خير ويباركلنا في حبنا ويبعد عننا كل سوء، ويجعل اللي جاي بينا أجمل من كل اللي فات، ويكتب لنا الخير والرضا وراحة البال في كل خطوة ❤️💍 بحبك حب أكبر من إني أعرف أشرحه في مسدج ، ومهما عدى وقت ومهما اتغيرت الأيام، هيفضل عندي ألف سبب يخليني أختارك وأتمسك بيكي وأحاول كل يوم أكون أحسن عشان نفسي أستاهل الحب اللي ليا في قلبك، وعايزك تعرفي إن النهارده مش بس يوم عيد ميلادك، ده كمان يوم بفتكر فيه أنا محظوظ قد إيه إنك موجودة في حياتي ، ربنا يخليكي ليا ويفرح قلبك ويحققلك كل اللي نفسك فيه، ويجمعني بيكي دايمًا على خير، وأفضل أشوف ضحكتك اللي بتخلّي الدنيا في عيني أحلى، وكل سنة وانتي طيبه يا أجمل بنت في عيني وأغلى إنسانة في قلبي، بحبك أوي أوي أوي يا بنوتى❤️🎂🥹💋❤️‍🔥💍 .</p>
+      <p>بحبك.</p>
+      <div class="sig">مورى</div>
+    </div>
+    </div>
+  </section>
+</main>
+
+<audio id="song" loop preload="auto" src="song.mp3"></audio>
+
+<script>
+(function(){
+  var target=new Date(2026,10,2,0,0,0);
+  var nf=new Intl.NumberFormat('ar-EG');
+  function tick(){
+    var diff=target-new Date();
+    var sub=document.getElementById('subline');
+    if(diff<=0){
+      sub.textContent='النهارده يومك، كل سنة وإنتي طيبة';
+      document.getElementById('cd').style.display='none';return;
+    }
+    var s=Math.floor(diff/1000);
+    var d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),sec=s%60;
+    function set(id,v){document.getElementById(id).textContent=nf.format(v)}
+    set('d',d);set('h',h);set('m',m);set('s',sec);
+  }
+  tick();setInterval(tick,1000);
+
+  var letterToggle=document.getElementById('letterToggle');
+  var letterContent=document.getElementById('letterContent');
+  if(letterToggle && letterContent){
+    letterToggle.addEventListener('click',function(){
+      var isOpen=letterContent.classList.toggle('open');
+      letterToggle.setAttribute('aria-expanded',String(isOpen));
+      letterContent.setAttribute('aria-hidden',String(!isOpen));
+      letterToggle.textContent=isOpen?'اقفلي الرسالة ❤️':'أفتحي كدا 💌';
+      if(isOpen){
+        letterContent.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+    });
+  }
+
+  var song=document.getElementById('song'),mus=document.getElementById('mus');
+  function syncBtn(){mus.textContent=song.paused?'▶':'❚❚'}
+  mus.addEventListener('click',function(){if(song.paused)song.play();else song.pause();syncBtn()});
+  song.addEventListener('play',syncBtn);song.addEventListener('pause',syncBtn);
+
+  function open(){
+    var g=document.getElementById('gift');
+    if(g.classList.contains('open'))return;
+    g.classList.add('open');
+    try{song.play().catch(function(){})}catch(e){}
+    setTimeout(function(){
+      document.getElementById('gate').classList.add('gone');
+      document.body.classList.remove('locked');
+      mus.classList.add('show');syncBtn();
+      confetti();
+    },900);
+  }
+  document.getElementById('go').addEventListener('click',open);
+  document.getElementById('gift').addEventListener('click',open);
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  function confetti(){
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var c=document.getElementById('fx'),x=c.getContext('2d');
+    c.width=innerWidth;c.height=innerHeight;
+    var cols=['#f2c4cf','#d9b27c','#ffffff','#c45a78','#fbe9ec'],ps=[];
+    for(var i=0;i<140;i++)ps.push({x:Math.random()*c.width,y:-20-Math.random()*c.height*.6,w:6+Math.random()*6,h:10+Math.random()*8,v:2+Math.random()*3,r:Math.random()*6,vr:(Math.random()-.5)*.2,dx:(Math.random()-.5)*1.4,c:cols[i%cols.length]});
+    var t0=performance.now();
+    (function f(t){
+      x.clearRect(0,0,c.width,c.height);
+      ps.forEach(function(p){p.y+=p.v;p.x+=p.dx;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.w/2,-p.h/2,p.w,p.h);x.restore()});
+      if(t-t0<6500)requestAnimationFrame(f);else x.clearRect(0,0,c.width,c.height);
+    })(t0);
+  }
+})();
+</script>
+</body>
+</html>
